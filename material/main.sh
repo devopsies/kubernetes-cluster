@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "=======> initializing kubeadm :"
-sudo kubeadm init --apiserver-advertise-address 192.168.5.10
+sudo kubeadm init
 
 echo "=======> copying config file :"
 mkdir -p $HOME/.kube
