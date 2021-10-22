@@ -9,7 +9,7 @@ nodes = [
 Vagrant.configure(2) do |config|
 	nodes.each do |node|
 		config.vm.define node[:hostname] do |vmachine|
-			config.vm.box = "generic/ubuntu2010"
+			config.vm.box = "peru/ubuntu-20.04-server-amd64"
 			config.vm.box_check_update = false
 			vmachine.vm.hostname = node[:hostname]
 			vmachine.vm.provider :libvirt do |domain|

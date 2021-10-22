@@ -25,7 +25,7 @@ apt-get update && apt-get install -y apt-transport-https ca-certificates curl gn
 echo "=======> installing containerd.io :"
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
     add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable" && \
-    apt update && apt -y install containerd.io
+    apt-get update && apt-get install -y containerd.io
 
 echo "=======> configuring containerd :"
 mkdir -p /etc/containerd
