@@ -1,0 +1,17 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby:
+
+node = {:hostname => "runner", :cpus => 1, :mem => 1024}
+
+Vagrant.configure(2) do |config|
+	config.vm.define node[:hostname] do |vmachine|
+		config.vm.box = "peru/ubuntu-20.04-server-amd64"
+		config.vm.box_check_update = false
+		vmachine.vm.hostname = node[:hostname]
+		vmachine.vm.provider :libvirt do |domain|
+			domain.memory = node[:mem]
+			domain.cpus = node[:cpus]
+		end
+		vmachine.vm.provision :shell, path: "init.sh"
+	end
+end
