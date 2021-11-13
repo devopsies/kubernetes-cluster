@@ -11,7 +11,5 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 # adding calico networking solution :
 kubectl apply -f https://docs.projectcalico.org/v3.20/manifests/calico.yaml
 
-# generating kubejoin.sh :
-kubeadm token create --print-join-command
-
-# now copy the output of the last command, and execute it on the worker node.
+# remove the "master" taint to be able to schedule pods on this control plane :
+kubectl taint nodes --all node-role.kubernetes.io/master-
